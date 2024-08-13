@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BibliotecaMobile.Views.InsertBookView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:BibliotecaMobile.ViewModels"
+    x:DataType="mvvm:InsertBookViewModel">
+    <VerticalStackLayout Padding="15">
+
+        <HorizontalStackLayout
+            Margin="0,20,0,0"
+            HorizontalOptions="Center"
+            Spacing="15">
+            <Image HeightRequest="50" Source="stackbooks.png" />
+            <Label
+                FontSize="30"
+                Text="Biblioteca"
+                TextColor="#0658D3" />
+        </HorizontalStackLayout>
+
+        <VerticalStackLayout
+            Margin="0,50,0,0"
+            Padding="10"
+            Spacing="40">
+
+            <Entry Placeholder="Nome do Livro" Text="{Binding Titulo}" />
+
+            <Entry Placeholder="Nome do Autor" Text="{Binding Autor}" />
+
+            <Entry Placeholder="ISBN" Text="{Binding Isbn}" />
+
+            <Entry Placeholder="Ano de Publicação" Text="{Binding Anopublicacao}" Keyboard="Numeric" />
+
+        </VerticalStackLayout>
+
+
+        <Button
+            Margin="0,90,0,0"
+            BackgroundColor="#0658D3"
+            Command="{Binding InsertBookCommand}"
+            CornerRadius="8"
+            Text="Cadastrar" />
+
+    </VerticalStackLayout>
+</ContentPage>

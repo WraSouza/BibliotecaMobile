@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BibliotecaMobile.Views.UsersView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:BibliotecaMobile.Models"
+    xmlns:vm="clr-namespace:BibliotecaMobile.ViewModels"
+    x:DataType="vm:UsersViewModel">
+
+    <Grid>
+        <Image
+            Margin="0,0,0,10"
+            HeightRequest="40"
+            HorizontalOptions="EndAndExpand"
+            Source="plus.png"
+            VerticalOptions="EndAndExpand">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GotoInsertUserCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+    </Grid>
+</ContentPage>

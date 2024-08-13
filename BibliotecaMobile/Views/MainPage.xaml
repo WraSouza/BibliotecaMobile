@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BibliotecaMobile.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:BibliotecaMobile.Models"
+    xmlns:vm="clr-namespace:BibliotecaMobile.ViewModels"
+    x:DataType="vm:MainViewModel"
+    HideSoftInputOnTapped="True">
+    
+    <Grid Padding="10">
+        <StackLayout>
+            <HorizontalStackLayout
+                Margin="0,30,0,0"
+                HorizontalOptions="Center"
+                Spacing="15">
+                <Image HeightRequest="50" Source="stackbooks.png" />
+                <Label
+                    FontSize="30"
+                    Text="Biblioteca"
+                    TextColor="#0658D3" />
+            </HorizontalStackLayout>            
+
+            <Label
+                Margin="0,30,0,0"
+                FontFamily="MontserratSemibold"
+                FontSize="30"
+                Text="Todos"
+                TextColor="#0658D3" />
+
+            <RefreshView Command="{Binding UpdateViewCommand}" IsRefreshing="{Binding UpdateViewCommand.IsRunning}">
+                <CollectionView
+                    EmptyView="Não Há Livros Cadastrados"
+                    HeightRequest="500"
+                    ItemsSource="{Binding Books}">
+                    
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                x:DataType="model:Book"
+                                ColumnSpacing="5"
+                                RowDefinitions="130"
+                                RowSpacing="15">
+                                <Border
+                                    Margin="0,5,5,0"
+                                    BackgroundColor="#F6F6F6"
+                                    Stroke="Gainsboro"
+                                    StrokeShape="RoundRectangle 5,5,5,5">
+                                    <VerticalStackLayout Padding="5" Spacing="8">
+                                        <Label
+                                            FontFamily="MontserratSemibold"
+                                            FontSize="15"
+                                            Text="Título"
+                                            TextColor="Black" />
+                                        <Label Text="{Binding Titulo}" TextColor="#8A8888" />
+                                        <Label
+                                            FontFamily="MontserratSemibold"
+                                            FontSize="15"
+                                            Text="Autor:"
+                                            TextColor="Black" />
+                                        <Label Text="{Binding Autor}" TextColor="#8A8888" />
+                                    </VerticalStackLayout>
+                                </Border>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </StackLayout>
+        <Image
+            Margin="0,0,0,10"
+            HeightRequest="40"
+            HorizontalOptions="EndAndExpand"
+            Source="plus.png"
+            VerticalOptions="EndAndExpand">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GotoInsertBookCommand}" />
+            </Image.GestureRecognizers>
+        </Image>
+
+    </Grid>
+
+
+</ContentPage>
