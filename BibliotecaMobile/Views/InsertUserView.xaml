@@ -20,16 +20,23 @@
                 TextColor="#0658D3" />
         </HorizontalStackLayout>
 
-        <Entry Margin="0,50,0,0" Text="{Binding Nome}" Placeholder="Nome do Usuário" />
+        <Entry
+            Margin="0,50,0,0"
+            Placeholder="Nome do Usuário"
+            Text="{Binding Nome}" />
 
-        <Entry Margin="0,50,0,0" Text="{Binding Email}" Placeholder="E-mail" Keyboard="Email"/>            
+        <Entry
+            Margin="0,50,0,0"
+            Keyboard="Email"
+            Placeholder="E-mail"
+            Text="{Binding Email}" />
 
         <Button
             Margin="0,0,0,30"
             BackgroundColor="#0658D3"
+            Command="{Binding InsertUserCommand}"
             CornerRadius="8"
             Text="Cadastrar"
-            Command="{Binding InsertUserCommand}"
             VerticalOptions="EndAndExpand" />
     </StackLayout>
 </ContentPage>

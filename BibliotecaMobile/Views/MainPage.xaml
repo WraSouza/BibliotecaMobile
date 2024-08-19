@@ -7,7 +7,7 @@
     xmlns:vm="clr-namespace:BibliotecaMobile.ViewModels"
     x:DataType="vm:MainViewModel"
     HideSoftInputOnTapped="True">
-    
+
     <Grid Padding="10">
         <StackLayout>
             <HorizontalStackLayout
@@ -19,7 +19,7 @@
                     FontSize="30"
                     Text="Biblioteca"
                     TextColor="#0658D3" />
-            </HorizontalStackLayout>            
+            </HorizontalStackLayout>
 
             <Label
                 Margin="0,30,0,0"
@@ -33,9 +33,9 @@
                     EmptyView="Não Há Livros Cadastrados"
                     HeightRequest="500"
                     ItemsSource="{Binding Books}">
-                    
+
                     <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                        <GridItemsLayout Orientation="Vertical" Span="1" />
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
@@ -46,23 +46,28 @@
                                 RowSpacing="15">
                                 <Border
                                     Margin="0,5,5,0"
-                                    BackgroundColor="#F6F6F6"
+                                    BackgroundColor="#F4F2F2"
                                     Stroke="Gainsboro"
                                     StrokeShape="RoundRectangle 5,5,5,5">
-                                    <VerticalStackLayout Padding="5" Spacing="8">
-                                        <Label
-                                            FontFamily="MontserratSemibold"
-                                            FontSize="15"
-                                            Text="Título"
-                                            TextColor="Black" />
-                                        <Label Text="{Binding Titulo}" TextColor="#8A8888" />
-                                        <Label
-                                            FontFamily="MontserratSemibold"
-                                            FontSize="15"
-                                            Text="Autor:"
-                                            TextColor="Black" />
-                                        <Label Text="{Binding Autor}" TextColor="#8A8888" />
-                                    </VerticalStackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <VerticalStackLayout Padding="5" Spacing="5">
+                                            <Label
+                                                FontFamily="MontserratSemibold"
+                                                FontSize="15"
+                                                Text="Título"
+                                                TextColor="Black" />
+                                            <Label Text="{Binding Titulo}" FontFamily="MontserratSemibold" FontSize="20" TextColor="#8A8888" />
+                                            <Label
+                                                FontFamily="MontserratSemibold"
+                                                FontSize="15"
+                                                Text="Autor:"
+                                                TextColor="Black" />
+                                            <Label Text="{Binding Autor}" FontFamily="MontserratSemibold" FontSize="20" TextColor="#8A8888" />
+                                        </VerticalStackLayout>
+
+                                        <Label Text="{Binding StatusBook}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Margin="0,0,30,0"/>
+                                    </StackLayout>
+
                                 </Border>
 
                             </Grid>

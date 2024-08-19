@@ -32,7 +32,7 @@ namespace BibliotecaMobile.Repositories.BookRepository
 
             for (int i = 0; i < dados.Count; i++)
             {
-                Book livro = new Book(dados[i].Titulo, dados[i].Autor, dados[i].Isbn, dados[i].AnoPublicacao);
+                Book livro = new Book(dados[i].Titulo, dados[i].Autor, dados[i].Isbn, dados[i].AnoPublicacao, dados[i].StatusBook);
                 _books.Add(livro);
             }
 

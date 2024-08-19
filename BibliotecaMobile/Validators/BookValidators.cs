@@ -9,10 +9,7 @@ namespace BibliotecaMobile.Validators
         {
             //Título
             Requires().
-                IsNotEmpty(book.Titulo, nameof(book.Titulo), "Título do Livro é Obrigatório");
-
-            Requires()
-                .IsGreaterThan(book.Titulo,200, nameof(book.Titulo), "O Título Deve Ter no Máximo 200 Caracteres");
+                IsNotEmpty(book.Titulo, nameof(book.Titulo), "Título do Livro é Obrigatório");           
 
 
             //Autor

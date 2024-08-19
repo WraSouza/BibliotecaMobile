@@ -33,7 +33,19 @@ public partial class MainViewModel : BaseViewModel
 
         foreach (var book in newBooks)
         {
-            Books.Add(book);
+            if(int.Parse(book.StatusBook) == 0)
+            {
+                var newBook = new Book(book.Titulo, book.Autor, book.Isbn, book.AnoPublicacao, "Disponível");
+
+                Books.Add(newBook);
+            }
+            else
+            {
+                var newBook = new Book(book.Titulo, book.Autor, book.Isbn, book.AnoPublicacao, "Indisponível");
+
+                Books.Add(newBook);
+            }
+            //Books.Add(book);
         }                     
 
         IsBusy = false;

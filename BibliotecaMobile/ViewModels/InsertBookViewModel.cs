@@ -24,6 +24,8 @@ namespace BibliotecaMobile.ViewModels
 
         }
 
+        private const string statusLivro = "Disponível";
+
         [ObservableProperty]
         string? titulo;
 
@@ -40,11 +42,11 @@ namespace BibliotecaMobile.ViewModels
         [RelayCommand]
         public async Task InsertBook()
         {
-            var book = new Book(titulo, autor, isbn, anopublicacao);
+            var book = new Book(titulo, autor, isbn, anopublicacao, statusLivro);
 
             var validator = new BookValidators(book);
 
-            if(!validator.IsValid)
+            if (!validator.IsValid)
             {
                 var messages = validator.Notifications.Select(x => x.Message);
 
@@ -70,6 +72,14 @@ namespace BibliotecaMobile.ViewModels
 
                 return;
             }
+
+            Anopublicacao = null;
+
+            Titulo = null;
+
+            Autor = null;
+
+            Isbn = null;
 
             var newtoast = Toast.Make("Livro Cadastrado Com Sucesso", CommunityToolkit.Maui.Core.ToastDuration.Long);
 
