@@ -23,16 +23,27 @@
             Padding="10"
             Spacing="40">
 
-            <Entry Placeholder="Nome do Livro" Text="{Binding Titulo}" />
+            <Entry
+                Placeholder="Nome do Livro"
+                Text="{Binding Titulo}"
+                TextTransform="Uppercase" />
 
-            <Entry Placeholder="Nome do Autor" Text="{Binding Autor}" />
+            <Entry
+                Placeholder="Nome do Autor"
+                Text="{Binding Autor}"
+                TextTransform="Uppercase" />
 
-            <Entry Placeholder="ISBN" Text="{Binding Isbn}" />
+            <Entry
+                Placeholder="ISBN"
+                Text="{Binding Isbn}"
+                TextTransform="Uppercase" />
 
-            <Entry Placeholder="Ano de Publicação" Text="{Binding Anopublicacao}" Keyboard="Numeric" />
+            <Entry
+                Keyboard="Numeric"
+                Placeholder="Ano de Publicação"
+                Text="{Binding Anopublicacao}" />
 
         </VerticalStackLayout>
-
 
         <Button
             Margin="0,90,0,0"

@@ -42,7 +42,7 @@
                             <Grid
                                 x:DataType="model:Book"
                                 ColumnSpacing="5"
-                                RowDefinitions="130"
+                                RowDefinitions="120"
                                 RowSpacing="15">
                                 <Border
                                     Margin="0,5,5,0"
@@ -56,13 +56,13 @@
                                                 FontSize="15"
                                                 Text="Título"
                                                 TextColor="Black" />
-                                            <Label Text="{Binding Titulo}" FontFamily="MontserratSemibold" FontSize="20" TextColor="#8A8888" />
+                                            <Label Text="{Binding Titulo}" FontFamily="MontserratSemibold" FontSize="13" TextColor="#8A8888" />
                                             <Label
                                                 FontFamily="MontserratSemibold"
                                                 FontSize="15"
                                                 Text="Autor:"
                                                 TextColor="Black" />
-                                            <Label Text="{Binding Autor}" FontFamily="MontserratSemibold" FontSize="20" TextColor="#8A8888" />
+                                            <Label Text="{Binding Autor}" FontFamily="MontserratSemibold" FontSize="13" TextColor="#8A8888" />
                                         </VerticalStackLayout>
 
                                         <Label Text="{Binding StatusBook}" VerticalOptions="Center" HorizontalOptions="EndAndExpand" Margin="0,0,30,0"/>

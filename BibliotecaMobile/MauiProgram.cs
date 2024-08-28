@@ -1,4 +1,6 @@
 ﻿using BibliotecaMobile.Repositories.BookRepository;
+using BibliotecaMobile.Repositories.BookRepository.BookImplementations;
+using BibliotecaMobile.Repositories.BookRepository.IBook.ReadBookRepository;
 using BibliotecaMobile.Repositories.UserRepository;
 
 namespace BibliotecaMobile;
@@ -31,6 +33,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<InsertBookView>();
 
 		builder.Services.AddScoped<IBookRepository, BookRepository>();
+        builder.Services.AddScoped<IReadBookRepository, BookReadImplementations>();
         builder.Services.AddScoped<IUserRepository, UserRepository>();
 
         return builder.Build();
