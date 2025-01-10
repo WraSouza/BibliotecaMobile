@@ -8,16 +8,23 @@ namespace BibliotecaMobile.Repositories.BookRepository
     {
         public async Task<bool> AddBookASync(Book book)
         {
+
             try
             {
                 var dados = await Constants.urlAPI
                .PostJsonAsync(book);
+                
+               return dados.ResponseMessage.IsSuccessStatusCode;              
 
-                return dados.ResponseMessage.IsSuccessStatusCode;
             }
-            catch (Exception ex)
-            {
-                await Shell.Current.DisplayAlert("", ex.Message, "OK");
+            catch (FlurlHttpException ex)
+            {                
+                if(ex.StatusCode == 400)
+                    await Shell.Current.DisplayAlert("", "Livro Já Existe Na Base De Dados", "OK");
+
+                if(ex.StatusCode > 400)
+                    await Shell.Current.DisplayAlert("", "Houve Um Problema Interno e Não Foi Possível Adicionar o Livro Na Base De Dados", "OK");
+
             }
 
             return false;

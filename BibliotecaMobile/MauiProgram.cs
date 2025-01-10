@@ -3,6 +3,7 @@ using BibliotecaMobile.Repositories.BookRepository.BookImplementations;
 using BibliotecaMobile.Repositories.BookRepository.IBook.ReadBookRepository;
 using BibliotecaMobile.Repositories.UserRepository;
 
+
 namespace BibliotecaMobile;
 
 public static class MauiProgram
@@ -11,9 +12,18 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
-			.UseMauiApp<App>()
+			.UseMauiApp<App>()            
 			.UseMauiCommunityToolkit()
-			.ConfigureFonts(fonts =>
+            .UseSentry(options =>
+            {               
+                options.Dsn = "https://c0e90ef8153366738c28041b6a92fa41@o4505269022752768.ingest.us.sentry.io/4507981108477952";
+                
+                options.Debug = true;
+               
+                options.TracesSampleRate = 1.0;
+                
+            })
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");

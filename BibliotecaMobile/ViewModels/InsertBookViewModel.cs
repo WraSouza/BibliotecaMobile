@@ -1,4 +1,5 @@
-﻿using BibliotecaMobile.Models;
+﻿using BibliotecaMobile.Helpers;
+using BibliotecaMobile.Models;
 using BibliotecaMobile.Repositories.BookRepository;
 using BibliotecaMobile.Validators;
 using CommunityToolkit.Maui.Alerts;
@@ -6,24 +7,8 @@ using System.Text;
 
 namespace BibliotecaMobile.ViewModels
 {
-    public partial class InsertBookViewModel : ObservableObject
-    {
-        private readonly IBookRepository _bookRepository;
-        public InsertBookViewModel(IBookRepository bookRepository)
-        {
-            _bookRepository = bookRepository;
-
-            //ResetarCampos();
-            Anopublicacao = null;
-
-            Titulo = null;
-
-            Autor = null;
-
-            Isbn = null;
-
-        }
-
+    public partial class InsertBookViewModel(IBookRepository bookRepository) : ObservableObject
+    { 
         private const string statusLivro = "Disponível";
 
         [ObservableProperty]
@@ -36,13 +21,13 @@ namespace BibliotecaMobile.ViewModels
         string? isbn;
 
         [ObservableProperty]
-        int? anopublicacao;        
-      
+        int anopublicacao;
+
 
         [RelayCommand]
         public async Task InsertBook()
         {
-            var book = new Book(titulo, autor, isbn, anopublicacao, statusLivro);
+            var book = new Book(Titulo, Autor, Isbn, Anopublicacao, statusLivro);
 
             var validator = new BookValidators(book);
 
@@ -62,31 +47,41 @@ namespace BibliotecaMobile.ViewModels
                 }
             }
 
-            bool result = await _bookRepository.AddBookASync(book);
+            var hasConnection = Conectividade.GetConnectivity();
 
-            if (!result)
+            if (hasConnection)
             {
-                var toast = Toast.Make("Falha Ao Cadastrar Livro, Tente Novamente", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                bool result = await bookRepository.AddBookASync(book);
 
-                await toast.Show();
+                if (!result)
+                {
+                    var toast = Toast.Make("Falha Ao Cadastrar Livro, Tente Novamente", CommunityToolkit.Maui.Core.ToastDuration.Long);
 
-                return;
+                    await toast.Show();
+
+                    return;
+                }
+
+                Anopublicacao = 0;
+
+                Titulo = null;
+
+                Autor = null;
+
+                Isbn = null;
+
+                var newtoast = Toast.Make("Livro Cadastrado Com Sucesso", CommunityToolkit.Maui.Core.ToastDuration.Long);
+
+                await newtoast.Show();
+
+                await Shell.Current.GoToAsync("..");
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Erro", "Verifique Sua Conexão de Internet", "OK");
             }
 
-            Anopublicacao = null;
-
-            Titulo = null;
-
-            Autor = null;
-
-            Isbn = null;
-
-            var newtoast = Toast.Make("Livro Cadastrado Com Sucesso", CommunityToolkit.Maui.Core.ToastDuration.Long);
-
-            await newtoast.Show();
-
-            await Shell.Current.GoToAsync("..");
         }
-        
+
     }
 }

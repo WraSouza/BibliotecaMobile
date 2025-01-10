@@ -2,8 +2,8 @@
 {
     public class Constants
     {
-        public static string urlAPI = "https://mzq2bdgh-7039.brs.devtunnels.ms/api/books"; 
+        public static string urlAPI = "https://g1wl4j1x-7039.brs.devtunnels.ms/api/books"; 
 
-        public static string urlAPIUser = "https://bxx0tc6v-7039.brs.devtunnels.ms/api/usuarios";
+        public static string urlAPIUser = "https://g1wl4j1x-7039.brs.devtunnels.ms/api/usuarios";
     }
 }

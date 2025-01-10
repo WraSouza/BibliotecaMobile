@@ -54,7 +54,7 @@ public partial class MainViewModel : BaseViewModel
 
                     Books.Add(newBook);
                 }
-                //Books.Add(book);
+               
             }
 
             IsBusy = false;
